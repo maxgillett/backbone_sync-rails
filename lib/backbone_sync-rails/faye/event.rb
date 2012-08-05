@@ -4,10 +4,10 @@ module BackboneSync
   module Rails
     module Faye
       class Event
-        def initialize(model, event, channel=nil)
+        def initialize(model, event, *args)
           @model = model
           @event = event
-          @subchannel = channel
+          @arguments = *args
         end
 
         def broadcast
@@ -49,7 +49,7 @@ module BackboneSync
         end
 
         def subchannel
-          @subchannel || @model.faye_channel
+          @model.faye_channel(@arguments)
         rescue NoMethodError => e
           @model.class.table_name
         end
