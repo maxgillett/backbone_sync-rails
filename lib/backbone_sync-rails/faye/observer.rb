@@ -4,19 +4,19 @@ module BackboneSync
   module Rails
     module Faye
       module Observer
-        def after_update(model, *args)
+        def custom_after_update(model, *args)
           broadcast_event(model, :update, *args)
         end
 
-        def after_create(model, *args)
+        def custom_after_create(model, *args)
           broadcast_event(model, :create, *args)
         end
 
-        def after_destroy(model, *args)
+        def custom_after_destroy(model, *args)
           broadcast_event(model, :destroy, *args)
         end
 
-        def after_touch(model, *args)
+        def custom_after_touch(model, *args)
           broadcast_event(model, :touch, *args)
         end
 
