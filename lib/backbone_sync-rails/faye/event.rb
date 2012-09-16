@@ -45,7 +45,7 @@ module BackboneSync
         end
 
         def data
-          { @event => { @model.id => @model.as_json } }
+          { @event => { @model.id => @model.as_json(@arguments) } }
         end
 
         def subchannel
